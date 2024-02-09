@@ -2,6 +2,9 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
+const TOO_SMALL_MESSAGE: &str = "Too small!";
+const TOO_BIG_MESSAGE: &str = "Too big!";
+const YOU_WIN_MESSAGE: &str = "You win!";
 fn main() {
     println!("Guess the number!");
 
@@ -25,10 +28,10 @@ fn main() {
 
         println!("You guess: {guess}");
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => println!("{TOO_SMALL_MESSAGE}"),
+            Ordering::Greater => println!("{TOO_BIG_MESSAGE}"),
             Ordering::Equal => {
-                println!("You win!");
+                println!("{YOU_WIN_MESSAGE}");
                 break;
             },
         }
